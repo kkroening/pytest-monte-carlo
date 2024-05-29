@@ -31,7 +31,7 @@ class Test__integration:
             '''
         )
         result = pytester.runpytest('-v')
-        result.assert_outcomes(passed=2, skipped=1)
+        result.assert_outcomes(passed=2)
 
     def test_disabled(self, pytester):
         pytester.makepyfile(
@@ -46,13 +46,26 @@ class Test__integration:
         result = pytester.runpytest('-v', '--no-monte-carlo')
         result.assert_outcomes(passed=1)
 
+    def test_skip(self, pytester):
+        pytester.makepyfile(
+            '''
+            import pytest
+
+            @pytest.mark.monte_carlo(0.0, skip=True)
+            def test_0():
+                pass
+            '''
+        )
+        result = pytester.runpytest('-v')
+        result.assert_outcomes(skipped=1)
+
     def test_matrix(self, pytester):
         pytester.makepyfile(
             '''
             import pytest
 
             # Parametrized test with 2**5 = 32 permutations
-            @pytest.mark.monte_carlo(0.3)
+            @pytest.mark.monte_carlo(0.3, skip=True)
             @pytest.mark.parametrize('arg1', [False, True])
             @pytest.mark.parametrize('arg2', [False, True])
             @pytest.mark.parametrize('arg3', [False, True])

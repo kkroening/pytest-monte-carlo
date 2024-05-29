@@ -75,3 +75,5 @@ filterwarnings = [
     "error::pytest.PytestUnraisableExceptionWarning",
     "error::RuntimeWarning",
 ]
+markers = []
+testpaths = ["tests"]

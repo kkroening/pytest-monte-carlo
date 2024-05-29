@@ -57,15 +57,23 @@ def _handle_node(
             raise ValueError('Expected one positional argument - `rate`')
 
         if not isinstance(marker.args[0], (int, float)):
-            raise ValueError('Rate must be an int or float')
+            raise TypeError('Rate must be an int or float')
 
         rate = float(marker.args[0])
         if rate < 0 or rate > 1:
             raise ValueError('Rate must be between 0.0 and 1.0')
 
+        should_skip = marker.kwargs.get('skip', False)
+        if not isinstance(should_skip, bool):
+            raise TypeError(f'Expected boolean value for `skip`; got {should_skip!r}')
+
         if not _should_keep_node(node.nodeid, rate):
-            node.add_marker(pytest.mark.skip(reason='Skipped by Monte Carlo selection'))
-            # node = None  # TBD: alternatively discard the test
+            if should_skip:
+                node.add_marker(
+                    pytest.mark.skip(reason='Skipped by Monte Carlo selection')
+                )
+            else:
+                node = None  # TBD: alternatively discard the test
 
     return node
 
