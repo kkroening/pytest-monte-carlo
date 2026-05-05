@@ -13,12 +13,12 @@ pytest = ">=8"
 pytest11 = { pytest_monte_carlo = "pytest_monte_carlo.plugin" }
 
 [tool.poetry.group.dev.dependencies]
+dycw-pytest-only = ">=2"
+ipython = ">=8"
+isort = {extras = ["colors"], version = ">=5"}
 mypy = ">=1.10"
 pylint = ">=3"
-ipython = ">=8"
-pytest-only = ">=2"
 pytest-faker = ">=2"
-isort = {extras = ["colors"], version = ">=5"}
 
 [build-system]
 requires = ["poetry-core"]

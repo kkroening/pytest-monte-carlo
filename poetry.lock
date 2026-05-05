@@ -70,6 +70,21 @@ graph = ["objgraph (>=1.7.2)"]
 profile = ["gprof2dot (>=2022.7.29)"]
 
 [[package]]
+name = "dycw-pytest-only"
+version = "2.1.1"
+description = ""
+optional = false
+python-versions = ">=3.9"
+groups = ["dev"]
+files = [
+    {file = "dycw_pytest_only-2.1.1-py3-none-any.whl", hash = "sha256:ea8fe48878dd95ad0ca804e549225cf3b7a1928eb188c22a284c1d17b48a7b89"},
+    {file = "dycw_pytest_only-2.1.1.tar.gz", hash = "sha256:b3c7dce202ee3fac6c83a47d7b9b581737d83db89aab4c624102def18edd00d5"},
+]
+
+[package.dependencies]
+pytest = ">=8.0.0"
+
+[[package]]
 name = "executing"
 version = "2.2.1"
 description = "Get the currently executing AST node of a frame, and other information"
@@ -661,21 +676,6 @@ files = [
 Faker = ">=0.7.3"
 
 [[package]]
-name = "pytest-only"
-version = "2.1.1"
-description = "Use @pytest.mark.only to run a single test"
-optional = false
-python-versions = ">=3.7.2,<4"
-groups = ["dev"]
-files = [
-    {file = "pytest_only-2.1.1-py3-none-any.whl", hash = "sha256:1bb74ae95ac44366da85ccf7da0815f11ae0bb0d07754d0def7f14584ead5988"},
-    {file = "pytest_only-2.1.1.tar.gz", hash = "sha256:d417e8d9f962fc772b7e130ab2319fe056f9191ff555fc178f4b66d6a18e248c"},
-]
-
-[package.dependencies]
-pytest = {version = ">=7.1", markers = "python_version >= \"3.7\" and python_version < \"4.0\""}
-
-[[package]]
 name = "stack-data"
 version = "0.6.3"
 description = "Extract data from python stack frames and tracebacks for informative displays"
@@ -763,4 +763,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "705d4884f5413e8ff049d8a16c4d62a4a2483947f204449aeb34597405e2d2d5"
+content-hash = "7fdb36a8eef1a70e1a865b21a03038c431071b8c8af61bfb9de18ddd86a4b945"
